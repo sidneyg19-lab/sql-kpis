@@ -42,6 +42,7 @@ O objetivo é demonstrar conhecimentos em:
 | [03-projetos](./03-projetos/) | 🏗️ Projetos | Orçamento, custos, saldo disponível e realizado |
 | [04-contratos](./04-contratos/) | 📑 Contratos | Vigência, vencimentos, fornecedores e compromissos |
 | [05-notas-fiscais](./05-notas-fiscais/) | 🧾 Fiscal | Notas de entrada, validação contábil e vínculo com pedidos |
+| [06-relatorios-gerenciais](./06-relatorios-gerenciais) | 📊 BI & Relatórios | Dashboards, KPIs consolidados e análises gerenciais |
 
 ---
 
