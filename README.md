@@ -62,6 +62,13 @@ As consultas permitem construir indicadores como:
 - 🧾 Notas fiscais pendentes
 - 🔗 Notas fiscais sem pedido vinculado
 - ✅ Indicadores de validação contábil
+- 📈 KPIs mensais consolidados
+- 📊 Comparativo de períodos
+- 🧩 Indicadores consolidados por área
+- ⏱️ Desempenho de processos
+- 🔎 Identificação de gargalos
+- ⚠️ Indicadores de SLA
+- 🔄 Volume de processos por status
 
 ---
 
