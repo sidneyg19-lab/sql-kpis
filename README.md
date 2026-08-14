@@ -47,6 +47,45 @@ O objetivo é demonstrar conhecimentos em:
 
 ---
 
+## ⭐ Projetos em destaque
+
+### 📊 Dashboard Executivo
+**Objetivo:** consolidar indicadores de diferentes áreas para apoiar a tomada de decisão.
+
+**Principais análises:**
+- indicadores financeiros e operacionais;
+- consolidação de KPIs;
+- acompanhamento de desempenho;
+- visão gerencial dos processos.
+
+➡️ [Ver consulta SQL](./06-relatorios-gerenciais/dashboard-executivo.sql)
+
+---
+
+### 💰 Controle de Custos por Projeto
+**Objetivo:** acompanhar custos, orçamento e utilização de recursos por projeto.
+
+**Principais análises:**
+- consolidação de custos;
+- comparação entre orçamento e realizado;
+- acompanhamento de saldo disponível;
+- identificação de desvios financeiros.
+
+➡️ [Ver consultas de Projetos](./03-projetos)
+
+---
+
+### 🔎 Análise de Desempenho de Processos
+**Objetivo:** identificar produtividade, gargalos e desempenho operacional por área.
+
+**Principais análises:**
+- taxa de conclusão;
+- tempo médio de execução;
+- ranking de desempenho por área;
+- análise utilizando Window Functions e `PARTITION BY`.
+
+➡️ [Ver consulta SQL](./07-analise-negocio/desempenho-processos.sql)
+
 ## 📊 Exemplos de KPIs
 
 As consultas permitem construir indicadores como:
