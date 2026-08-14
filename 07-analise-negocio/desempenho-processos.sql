@@ -26,7 +26,41 @@ WITH desempenho AS (
         ) AS tempo_medio_conclusao_dias
 
     FROM processos
-    GROUP BY responsavel, area
+    GROUP BY
+        responsavel,
+        area
+),
+
+indicadores AS (
+    SELECT
+        responsavel,
+        area,
+        total_processos,
+        processos_concluidos,
+        tempo_medio_conclusao_dias,
+
+        ROUND(
+            processos_concluidos * 100.0 /
+            NULLIF(total_processos, 0),
+            2
+        ) AS taxa_conclusao_percentual,
+
+        SUM(total_processos) OVER (
+            PARTITION BY area
+        ) AS total_processos_area,
+
+        SUM(processos_concluidos) OVER (
+            PARTITION BY area
+        ) AS total_concluidos_area,
+
+        DENSE_RANK() OVER (
+            PARTITION BY area
+            ORDER BY
+                processos_concluidos DESC,
+                tempo_medio_conclusao_dias ASC
+        ) AS ranking_na_area
+
+    FROM desempenho
 )
 
 SELECT
@@ -34,22 +68,31 @@ SELECT
     area,
     total_processos,
     processos_concluidos,
+    taxa_conclusao_percentual,
     tempo_medio_conclusao_dias,
+    ranking_na_area,
 
     ROUND(
-        processos_concluidos * 100.0 /
-        NULLIF(total_processos, 0),
+        total_concluidos_area * 100.0 /
+        NULLIF(total_processos_area, 0),
         2
-    ) AS taxa_conclusao_percentual,
+    ) AS taxa_conclusao_area,
 
-    DENSE_RANK() OVER (
-        PARTITION BY area
-        ORDER BY processos_concluidos DESC
-    ) AS ranking_na_area,
+    CASE
+        WHEN taxa_conclusao_percentual >= 90
+            THEN 'Alto desempenho'
 
-    SUM(processos_concluidos) OVER (
-        PARTITION BY area
-    ) AS total_concluidos_area
+        WHEN taxa_conclusao_percentual >= 75
+            THEN 'Bom desempenho'
 
-FROM desempenho
-ORDER BY area, ranking_na_area;
+        WHEN taxa_conclusao_percentual >= 50
+            THEN 'Atenção'
+
+        ELSE 'Crítico'
+    END AS classificacao_desempenho
+
+FROM indicadores
+
+ORDER BY
+    area,
+    ranking_na_area;
